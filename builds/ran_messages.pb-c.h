@@ -35,7 +35,11 @@ typedef enum _RANMessageType {
 } RANMessageType;
 typedef enum _RANParameter {
   RAN_PARAMETER__GNB_ID = 1,
-  RAN_PARAMETER__UE_LIST = 3
+  RAN_PARAMETER__UE_LIST = 3,
+  /*
+   * new parameter for Project 1
+   */
+  RAN_PARAMETER__CELL_LOAD = 4
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(RAN_PARAMETER)
 } RANParameter;
 
@@ -133,14 +137,14 @@ struct  _UeInfoM
    */
   int32_t rnti;
   /*
-   * specific ue's measurements (these will come from the gnb)
+   * modified measurements for Project 1
    */
-  protobuf_c_boolean has_meas_type_1;
-  float meas_type_1;
-  protobuf_c_boolean has_meas_type_2;
-  float meas_type_2;
-  protobuf_c_boolean has_meas_type_3;
-  float meas_type_3;
+  protobuf_c_boolean has_ber_dl;
+  float ber_dl;
+  protobuf_c_boolean has_ber_ul;
+  float ber_ul;
+  protobuf_c_boolean has_rsrp;
+  float rsrp;
   /*
    * specific ue's propoerties (these will be set by the xapp and sent to gnb)
    */
@@ -148,10 +152,17 @@ struct  _UeInfoM
   protobuf_c_boolean prop_1;
   protobuf_c_boolean has_prop_2;
   float prop_2;
+  /*
+   *new measurements for Project 1
+   */
+  protobuf_c_boolean has_mcs_dl;
+  int32_t mcs_dl;
+  protobuf_c_boolean has_mcs_ul;
+  int32_t mcs_ul;
 };
 #define UE_INFO_M__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&ue_info_m__descriptor) \
-    , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 
 
 struct  _UeListM

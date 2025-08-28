@@ -590,7 +590,7 @@ const ProtobufCMessageDescriptor ran_message__descriptor =
   (ProtobufCMessageInit) ran_message__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor ue_info_m__field_descriptors[6] =
+static const ProtobufCFieldDescriptor ue_info_m__field_descriptors[8] =
 {
   {
     "rnti",
@@ -605,36 +605,36 @@ static const ProtobufCFieldDescriptor ue_info_m__field_descriptors[6] =
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "meas_type_1",
+    "ber_dl",
     2,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_FLOAT,
-    offsetof(UeInfoM, has_meas_type_1),
-    offsetof(UeInfoM, meas_type_1),
+    offsetof(UeInfoM, has_ber_dl),
+    offsetof(UeInfoM, ber_dl),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "meas_type_2",
+    "ber_ul",
     3,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_FLOAT,
-    offsetof(UeInfoM, has_meas_type_2),
-    offsetof(UeInfoM, meas_type_2),
+    offsetof(UeInfoM, has_ber_ul),
+    offsetof(UeInfoM, ber_ul),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "meas_type_3",
+    "rsrp",
     4,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_FLOAT,
-    offsetof(UeInfoM, has_meas_type_3),
-    offsetof(UeInfoM, meas_type_3),
+    offsetof(UeInfoM, has_rsrp),
+    offsetof(UeInfoM, rsrp),
     NULL,
     NULL,
     0,             /* flags */
@@ -664,19 +664,45 @@ static const ProtobufCFieldDescriptor ue_info_m__field_descriptors[6] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "mcs_dl",
+    7,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(UeInfoM, has_mcs_dl),
+    offsetof(UeInfoM, mcs_dl),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "mcs_ul",
+    8,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(UeInfoM, has_mcs_ul),
+    offsetof(UeInfoM, mcs_ul),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned ue_info_m__field_indices_by_name[] = {
-  1,   /* field[1] = meas_type_1 */
-  2,   /* field[2] = meas_type_2 */
-  3,   /* field[3] = meas_type_3 */
+  1,   /* field[1] = ber_dl */
+  2,   /* field[2] = ber_ul */
+  6,   /* field[6] = mcs_dl */
+  7,   /* field[7] = mcs_ul */
   4,   /* field[4] = prop_1 */
   5,   /* field[5] = prop_2 */
   0,   /* field[0] = rnti */
+  3,   /* field[3] = rsrp */
 };
 static const ProtobufCIntRange ue_info_m__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 6 }
+  { 0, 8 }
 };
 const ProtobufCMessageDescriptor ue_info_m__descriptor =
 {
@@ -686,7 +712,7 @@ const ProtobufCMessageDescriptor ue_info_m__descriptor =
   "UeInfoM",
   "",
   sizeof(UeInfoM),
-  6,
+  8,
   ue_info_m__field_descriptors,
   ue_info_m__field_indices_by_name,
   1,  ue_info_m__number_ranges,
@@ -776,16 +802,18 @@ const ProtobufCEnumDescriptor ran_message_type__descriptor =
   ran_message_type__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue ran_parameter__enum_values_by_number[2] =
+static const ProtobufCEnumValue ran_parameter__enum_values_by_number[3] =
 {
   { "GNB_ID", "RAN_PARAMETER__GNB_ID", 1 },
   { "UE_LIST", "RAN_PARAMETER__UE_LIST", 3 },
+  { "CELL_LOAD", "RAN_PARAMETER__CELL_LOAD", 4 },
 };
 static const ProtobufCIntRange ran_parameter__value_ranges[] = {
-{1, 0},{3, 1},{0, 2}
+{1, 0},{3, 1},{0, 3}
 };
-static const ProtobufCEnumValueIndex ran_parameter__enum_values_by_name[2] =
+static const ProtobufCEnumValueIndex ran_parameter__enum_values_by_name[3] =
 {
+  { "CELL_LOAD", 2 },
   { "GNB_ID", 0 },
   { "UE_LIST", 1 },
 };
@@ -796,9 +824,9 @@ const ProtobufCEnumDescriptor ran_parameter__descriptor =
   "RAN_parameter",
   "RANParameter",
   "",
-  2,
+  3,
   ran_parameter__enum_values_by_number,
-  2,
+  3,
   ran_parameter__enum_values_by_name,
   2,
   ran_parameter__value_ranges,
